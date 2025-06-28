@@ -1,20 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title class="titulo">Calculadora</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="calculator">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <!-- Pantalla -->
+    <div class="display">
+      <div class="operation">{{ operation || '0' }}</div>
+      <div class="result">{{ result || '0' }}</div>
+    </div>
+
+    <!-- Botones -->
+    <div class="buttons">
+
+      <!-- Fila 1: Paréntesis -->
+      <button class="btn sci" (click)="append('(')">(</button>
+      <button class="btn sci" (click)="append(')')">)</button>
+
+      <!-- Funciones científicas -->
+      <button class="btn sci" (click)="append ('sin')">sin</button>
+      <button class="btn sci" (click)="append ('cos')">cos</button>
+      <button class="btn sci" (click)="append ('tan')">tan</button>
+      <button class="btn sci" (click)="append ('log')">log</button>
+      <button class="btn sci" (click)="append('π')">π</button>
+      <button class="btn sci" (click)="append('x²')">x²</button>
+      <button class="btn sci" (click)="append('^')">xʸ</button>
+
+      <!-- Fila de controles -->
+      <button class="btn clear" (click)="clear()">AC</button>
+      <button class="btn" (click)="toggleSign()">±</button>
+      <button class="btn" (click)="percent()">%</button>
+      <button class="btn operator" (click)="append('/')">÷</button>
+
+      <!-- Números 7 8 9 -->
+      <button class="btn number" (click)="append('7')">7</button>
+      <button class="btn number" (click)="append('8')">8</button>
+      <button class="btn number" (click)="append('9')">9</button>
+      <button class="btn operator" (click)="append('*')">×</button>
+
+      <!-- Números 4 5 6 -->
+      <button class="btn number" (click)="append('4')">4</button>
+      <button class="btn number" (click)="append('5')">5</button>
+      <button class="btn number" (click)="append('6')">6</button>
+      <button class="btn operator" (click)="append('-')">−</button>
+
+      <!-- Números 1 2 3 -->
+      <button class="btn number" (click)="append('1')">1</button>
+      <button class="btn number" (click)="append('2')">2</button>
+      <button class="btn number" (click)="append('3')">3</button>
+      <button class="btn operator" (click)="append('+')">+</button>
+
+      <!-- Última fila: 0, ., = -->
+      <button class="btn number zero" (click)="append('0')">0</button>
+      <button class="btn number" (click)="append('.')">.</button>
+      <button class="btn equal" (click)="calculate()">=</button>
+
+    </div>
   </div>
 </ion-content>
